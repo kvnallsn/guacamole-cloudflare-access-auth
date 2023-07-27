@@ -1,0 +1,8 @@
+{
+    "guacamoleVersion": "1.5.2",
+    "name": "Cloudflare Access Authentication Extension",
+    "namespace": "guac-auth-cloudflare",
+    "authProviders": [
+        "org.apache.guacamole.auth.CloudflareAuthenticationProvider"
+    ]
+}

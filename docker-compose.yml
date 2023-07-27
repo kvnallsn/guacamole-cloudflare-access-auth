@@ -1,0 +1,24 @@
+services:
+  psql:
+    image: postgres:15.3-bookworm
+    environment:
+      POSTGRES_USER: guacd
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d:z
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U guacd -d guacd"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  guacd:
+    image: guacamole/guacd:1.5.2
+    ports:
+      - "4822:4822"
