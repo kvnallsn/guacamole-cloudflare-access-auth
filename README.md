@@ -63,19 +63,19 @@ The example command makes the following assumptions:
 ```bash
 docker run \
     -d \
-	--rm \
-	--name guacamole-cloudflare \
-	--add-host host.docker.internal:host-gateway \
-	-e ENABLE_ENVIRONMENT_PROPERTIES=true \
-	-e POSTGRESQL_DATABASE=guacd \
-	-e POSTGRESQL_USER=guacd \
-	-e POSTGRESQL_PASSWORD=password \
-	-e POSTGRESQL_HOSTNAME=host.docker.internal \
-	-e POSTGRESQL_AUTO_CREATE_ACCOUNTS=true \
-	-e GUACD_HOSTNAME=host.docker.internal \
-	-e GUCAD_PORT=4822 \
+    --rm \
+    --name guacamole-cloudflare \
+    --add-host host.docker.internal:host-gateway \
+    -e ENABLE_ENVIRONMENT_PROPERTIES=true \
+    -e POSTGRESQL_DATABASE=guacd \
+    -e POSTGRESQL_USER=guacd \
+    -e POSTGRESQL_PASSWORD=password \
+    -e POSTGRESQL_HOSTNAME=host.docker.internal \
+    -e POSTGRESQL_AUTO_CREATE_ACCOUNTS=true \
+    -e GUACD_HOSTNAME=host.docker.internal \
+    -e GUCAD_PORT=4822 \
     -e CLOUDFLARE_ACCESS_TEAM=myteam \
-	-e CLOUDFLARE_ACCESS_AUDIENCE=ceb84cb2a6d418999fea0ebac41b86ba37f747c3990dace944fc0f78f3dcae25 \
-	-p "8080:8080" \
-	kvnallsn/guacamole:1.5.2
+    -e CLOUDFLARE_ACCESS_AUDIENCE=ceb84cb2a6d418999fea0ebac41b86ba37f747c3990dace944fc0f78f3dcae25 \
+    -p "8080:8080" \
+    kvnallsn/guacamole:1.5.2
 ```
