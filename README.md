@@ -18,10 +18,11 @@ This plugin requires a Cloudflare Zero Trust account exists and is configured.  
 
 The following two fields must be set in `$GUACMOLE_HOME/guacamole.properties`:
 
-| Field                        | Description                                               |
-| ---------------------------- | --------------------------------------------------------- |
-| `cloudflare-access-team`     | The name of the team.  Used to build the appropriate URLs |
-| `cloudflare-access-audience` | The value of the `aud` claim in the Application Token.  Can be found on the Zero Trust Dashboard under `Access / Applications / <Application> / Overview` |
+| Field                           | Required | Description                                               |
+| ------------------------------- | -------- | --------------------------------------------------------- |
+| `cloudflare-access-team`        | Yes      | The name of the team.  Used to build the appropriate URLs |
+| `cloudflare-access-audience`    | Yes      | The value of the `aud` claim in the Application Token.  Can be found on the Zero Trust Dashboard under `Access / Applications / <Application> / Overview` |
+| `cloudflare-access-roles-claim` | No       | The name of the roles claim to load group information from.  Defaults to `roles` |
 
 #### Example 
 ```
@@ -33,10 +34,11 @@ cloudflare-access-audience: ceb84cb2a6d418999fea0ebac41b86ba37f747c3990dace944fc
 ### Environment
 If you'd prefer to configure using environemnt variables, you must `enable-environment-properties: true` in your `guacamole.properties` file. This is useful when using the docker image. You can then use the below variables to configure this plugin.
 
-| Field                        | Environment Variable         |
-| ---------------------------- | ---------------------------- |
-| `cloudflare-access-team`     | `CLOUDFLARE_ACCESS_TEAM`     |
-| `cloudflare-access-audience` | `CLOUDFLARE_ACCESS_AUDIENCE` |
+| Field                           | Environment Variable            |
+| ------------------------------- | ------------------------------- |
+| `cloudflare-access-team`        | `CLOUDFLARE_ACCESS_TEAM`        |
+| `cloudflare-access-audience`    | `CLOUDFLARE_ACCESS_AUDIENCE`    |
+| `cloudflare-access-roles-claim` | `CLOUDFLARE_ACCESS_ROLES_CLAIM` |
 
 ## Running
 

@@ -16,29 +16,42 @@ public class ConfigurationService {
      * Returns the name of the cloudflare access team
      * 
      * @return
-     *  The team name associated with this cloudflare access request
+     *         The team name associated with this cloudflare access request
      * 
      * @throws GuacamoleException
-     *  If guacamole.properties cannot be parsed
+     *                            If guacamole.properties cannot be parsed
      */
     public String getCloudflareAccessTeam() throws GuacamoleException {
         return environment.getRequiredProperty(
-            CloudflareAuthenticationGuacamoleProperties.CLOUDFLARE_ACCESS_TEAM
-        );
+                CloudflareAuthenticationGuacamoleProperties.CLOUDFLARE_ACCESS_TEAM);
     }
 
     /**
-     * Returns the audiance of the cloudflare access team
+     * Returns the audience of the cloudflare access team
      * 
      * @return
-     *  The `aud` value to validate against in the JWT
+     *         The `aud` value to validate against in the JWT
      * 
      * @throws GuacamoleException
-     *  If guacamole.properties cannot be parsed
+     *                            If guacamole.properties cannot be parsed
      */
     public String getCloudflareAccessAudience() throws GuacamoleException {
         return environment.getRequiredProperty(
-            CloudflareAuthenticationGuacamoleProperties.CLOUDFLARE_ACCESS_AUDIENCE
-        );
+                CloudflareAuthenticationGuacamoleProperties.CLOUDFLARE_ACCESS_AUDIENCE);
+    }
+
+    /**
+     * Returns the name of the roles claim use to build user groups
+     * 
+     * @return
+     *         The name of the roles claim in the JWT
+     * 
+     * @throws GuacamoleException
+     *                            If guacamole.properties cannot be parsed
+     */
+    public String getCloudflareAccessRolesClaim() throws GuacamoleException {
+        return environment.getProperty(
+                CloudflareAuthenticationGuacamoleProperties.CLOUDFLARE_ACCESS_ROLES_CLAIM,
+                "roles");
     }
 }

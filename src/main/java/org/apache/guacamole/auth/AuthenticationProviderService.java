@@ -46,6 +46,13 @@ public class AuthenticationProviderService {
         HttpServletRequest req = credentials.getRequest();
         String authToken = req.getHeader("Cf-Access-Jwt-Assertion");
 
+        if (authToken == null) {
+            throw new GuacamoleInvalidCredentialsException("Invalid login",
+                    CredentialsInfo.USERNAME_PASSWORD);
+        }
+
+        System.out.println(authToken);
+
         try {
             // decode JWT
             DecodedJWT token = JWT.decode(authToken);
@@ -60,16 +67,17 @@ public class AuthenticationProviderService {
                     .withIssuer(String.format("https://%s.cloudflareaccess.com", confService.getCloudflareAccessTeam()))
                     .build();
 
-            verifier.verify(token);
+            DecodedJWT verifiedToken = verifier.verify(token);
 
             CloudflareUser user = authenticatedUserProvider.get();
-            user.init(token, credentials);
+            user.init(verifiedToken, credentials, confService.getCloudflareAccessRolesClaim());
             return user;
 
         } catch (Exception exception) {
             // catch all other exceptions
             System.out.println("cloudflare access auth failed");
             System.out.println(exception.toString());
+
             throw new GuacamoleInvalidCredentialsException("Invalid login", exception,
                     CredentialsInfo.USERNAME_PASSWORD);
         }
