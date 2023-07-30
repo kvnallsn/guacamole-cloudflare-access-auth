@@ -949,7 +949,7 @@ END
     # Update config file
     set_property            "cloudflare-access-team"            "$CLOUDFLARE_ACCESS_TEAM"
     set_property            "cloudflare-access-audience"        "$CLOUDFLARE_ACCESS_AUDIENCE"
-    set_optional_property   "cloudflare-access-rols-claim"      "$CLOUDFLARE_ACCESS_ROLES_CLAIM"
+    set_optional_property   "cloudflare-access-roles-claim"      "$CLOUDFLARE_ACCESS_ROLES_CLAIM"
 
     # Add required .jar files to GUACAMOLE_EXT
     ln -s /opt/guacamole/cloudflare/guacamole-auth-*.jar   "$GUACAMOLE_EXT"
