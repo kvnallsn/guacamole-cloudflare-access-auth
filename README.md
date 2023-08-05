@@ -1,3 +1,5 @@
+**Deprecated: Please see [guacamole-jwt-auth](https://github.com/kvnallsn/guacamole-jwt-auth) for a replacement**
+
 # Guacamole Cloudflare Access Authentication
 Auth plugin for [Apache Guacamole](https://guacamole.apache.org/) that supports placing the web client behind [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/) for user authentication.
 
